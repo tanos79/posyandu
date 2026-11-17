@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# 1. Menghilangkan .php dari URL
+# Misal: edukasturi-web/login.php jadi edukasturi-web/login
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# 2. Mencegah orang melihat isi folder (Security)
+Options -Indexes
+
+# 3. Halaman Error Custom (Opsional nanti)
+# ErrorDocument 404 /edukasturi-web/404.php
